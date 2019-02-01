@@ -9,7 +9,6 @@ client = commands.Bot(command_prefix='a?') # prefix
 # random.cat
 @client.command()
 async def cat(msg):
- if msg.author.bot: return
  async with aiohttp.ClientSession() as req:
     async with req.get('https://aws.random.cat/meow') as cat:
         cat = await cat.json()
@@ -18,7 +17,6 @@ async def cat(msg):
 # dog.ceo
 @client.command()
 async def dog(msg):
- if msg.author.bot: return
  async with aiohttp.ClientSession() as req:
     async with req.get('https://dog.ceo/api/breeds/image/random') as dog:
         dog = await dog.json()
@@ -27,7 +25,6 @@ async def dog(msg):
 # animals.anidiots.guide     
 @client.command()
 async def penguin(msg):
- if msg.author.bot: return
  async with aiohttp.ClientSession() as req:
     async with req.get('http://animals.anidiots.guide/penguin') as penguin:
         penguin = await penguin.json()
@@ -35,7 +32,6 @@ async def penguin(msg):
 
 @client.command()
 async def panda(msg):
- if msg.author.bot: return
  async with aiohttp.ClientSession() as req:
     async with req.get('http://animals.anidiots.guide/panda') as panda:
         panda = await panda.json()
@@ -43,7 +39,6 @@ async def panda(msg):
 
 @client.command()
 async def tiger(msg):
- if msg.author.bot: return
  async with aiohttp.ClientSession() as req:
     async with req.get('http://animals.anidiots.guide/tiger') as tiger:
         tiger = await tiger.json()
@@ -51,7 +46,6 @@ async def tiger(msg):
 
 @client.command()
 async def lion(msg):
- if msg.author.bot: return
  async with aiohttp.ClientSession() as req:
     async with req.get('http://animals.anidiots.guide/lion') as lion:
         lion = await lion.json()
@@ -59,7 +53,6 @@ async def lion(msg):
 
 @client.command()
 async def redpanda(msg):
- if msg.author.bot: return
  async with aiohttp.ClientSession() as req:
     async with req.get('http://animals.anidiots.guide/red_panda') as redpanda:
         redpanda = await redpanda.json()
@@ -68,11 +61,18 @@ async def redpanda(msg):
 # nekos.life
 @client.command()
 async def lizard(msg):
- if msg.author.bot: return
  async with aiohttp.ClientSession() as req:
     async with req.get('https://nekos.life/api/lizard') as lizard:
         lizard = await lizard.json()
-        return await msg.channel.send(lizard['url'])       
+        return await msg.channel.send(lizard['url'])
+
+# random-d.uk
+@client.command()
+async def duck(msg):
+ async with aiohttp.ClientSession() as req:
+    async with req.get('https://random-d.uk/api/v1/random') as duck:
+        duck = await duck.json()
+        return await msg.channel.send(duck['url'])     
 
 # login
 client.run('haha no')
