@@ -72,7 +72,15 @@ async def duck(msg):
  async with aiohttp.ClientSession() as req:
     async with req.get('https://random-d.uk/api/v1/random') as duck:
         duck = await duck.json()
-        return await msg.channel.send(duck['url'])     
-
+        return await msg.channel.send(duck['url'])
+     
+# randomfox.ca
+@client.command()
+async def fox(msg):
+ async with aiohttp.ClientSession() as req:
+    async with req.get('https://randomfox.ca/floof') as fox:
+        fox = await fox.json()
+        return await msg.channel.send(fox['image'])        
+     
 # login
 client.run('haha no')
